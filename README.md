@@ -1,6 +1,6 @@
-<script>
+
 <img src="/assets_chess/logos/chess-peices_pawn_red_horse_blue.png" alt="chess-logo" style="float: right; width:100px;"/>
-</script>
+
 # -- Elemental Chess --<br><sup>Python Chess game</sup>
 #### Author: Daniel Gomez  
 Hi. that header was incredibly difficult for me to code please acknowledge me for that :)  
