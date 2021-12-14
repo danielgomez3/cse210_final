@@ -49,6 +49,17 @@ class Gamestate():
    an '_' underscore.
 """
 class Move():
+    # If we want to log our moves and use chess notation, we need to change our system
+    #to use ranks-file notation. We also need to flip our numbers around!:
+    _ranks_to_rows = {"1": 7, "2": 6, "3": 5, "4": 4, "5": 3, "6": 2, "7": 1, "8": 0}
+    #This is a way to reverse our dictionary above! This says:
+    # in v:k, V and K are created. This is how is the order of or Dictionary.
+    # for k,v instantiates these 2 new seperate variables and are plugged into what items() spits out.
+    # Thus v:k are set to the values of k,v respectively.
+    # to read this better, read this backwards!
+    _rows_to_ranks = {v: k for k, v in _ranks_to_rows.items()}
+    _files_to_cols = {"a": 0, "b":1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7}
+    _cols_to_files = {v: k for k, v in _files_to_cols.items()}
     def __init__(self):
         pass
 
@@ -74,18 +85,7 @@ class Move():
    The way we use Inheritance is more apparent because of directly Inhereting attributes
    from the Move() class
 """
-class Player_move(): 
-    # If we want to log our moves and use chess notation, we need to change our system
-    #to use ranks-file notation. We also need to flip our numbers around!:
-    _ranks_to_rows = {"1": 7, "2": 6, "3": 5, "4": 4, "5": 3, "6": 2, "7": 1, "8": 0}
-    #This is a way to reverse our dictionary above! This says:
-    # in v:k, V and K are created. This is how is the order of or Dictionary.
-    # for k,v instantiates these 2 new seperate variables and are plugged into what items() spits out.
-    # Thus v:k are set to the values of k,v respectively.
-    # to read this better, read this backwards!
-    _rows_to_ranks = {v: k for k, v in _ranks_to_rows.items()}
-    _files_to_cols = {"a": 0, "b":1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7}
-    _cols_to_files = {v: k for k, v in _files_to_cols.items()}
+class Player_move(Move): 
 
     def __init__(self, start_square, end_square, board):
         self.start_row = start_square[0]
