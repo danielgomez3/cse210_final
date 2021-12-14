@@ -67,7 +67,7 @@ def main():
                     player_clicks.append(sq_selected) # append for both 1st and 2nd clicks
 
                 if len(player_clicks) == 2: #What happens if they click twice:
-                    move = chess_engine.Move(player_clicks[0], player_clicks[1], gs.board)
+                    move = chess_engine.Player_move(player_clicks[0], player_clicks[1], gs.board)
                     print(move.get_chess_notation())
                     gs.make_move(move)
                     sq_selected = () # reset the user clicks
