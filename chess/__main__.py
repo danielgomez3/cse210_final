@@ -1,13 +1,15 @@
 """
  Description:
-    This File uses uses the chess_engine.py file and imports its classes, the classes methods, and attributes to use in the Game Loop
+    This File uses uses the chess_engine.py file and imports its classes, 
+    the classes methods, and attributes to use in the Game Loop
 
  OOP Principles Used:
-   Inheritance
+   Classes
 
  Reasoning:
-   This class uses inheritance because...
-   This file uses polymorphism etc....
+   This file is crucial for the whole program to run. We use object instantiation
+   to create an instance of the Gamestate() Class through 'gs', and the Player_move() class
+   to manipulate
 """
 
 import pygame as p
@@ -27,14 +29,15 @@ def load_images():
 
 """
  Description:
-    This File uses uses the chess_engine.py file and imports its classes, the classes methods, and attributes to use in the Game Loop
+    Here is our game loop we use to run the Gamestate
 
  OOP Principles Used:
-   Inheritance, Abstraction, etc...
-
+    Classes, Object Instantiation
  Reasoning:
-   This class uses inheritance because...
-   This file uses polymorphism etc....
+    Without Object Instantiatin, we would have to do everythin in one file or scope,
+    which would make this file not only tedious but unreadable.
+    Because we are able to instantiate objects of Gamestate() and Player_move()
+    we can put every operation within a simple and readable and small 'game loop'
 """
 def main():
     p.init()

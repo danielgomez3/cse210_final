@@ -1,14 +1,13 @@
-
-
 """
  Description:
 
  OOP Principles Used:
-   Inheritance, Abstraction, etc...
+    Inheritence
 
  Reasoning:
-   This class uses inheritance because...
-   This file uses polymorphism etc....
+   This class uses Encapsulation because althoug our __main__ file will create
+   an object class, in no way do or should it ever touch _white_to_move and _move_log,
+   as denoted with an underscore
 """
 class Gamestate():
     def __init__(self):
@@ -36,10 +35,12 @@ class Gamestate():
  Description:
 
  OOP Principles Used:
-   Polymorphism, Encapsulation
+   Inheritance, Encapsulation
 
  Reasoning:
-   We name what a move might do. In the future there could be more kinds 
+   This class Implements Inheritence because we setting a standard for all of our child classes 
+   so that they might inherit our attributes.
+   We declare  what all moves can do. In the future there could be more kinds 
    of moves(What about 4-player chess, or a fun mini game where there are special moves???).
    But for now we make a template on what a move could be like.
    This isn't an Abstract Class exactly per-se because we instantiate
@@ -60,6 +61,7 @@ class Move():
     _rows_to_ranks = {v: k for k, v in _ranks_to_rows.items()}
     _files_to_cols = {"a": 0, "b":1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7}
     _cols_to_files = {v: k for k, v in _files_to_cols.items()}
+
     def __init__(self):
         pass
 
@@ -73,17 +75,19 @@ class Move():
  Description:
 
  OOP Principles Used:
-   Abstaction, Inheritance
+   Polymorphism, Abstraction
 
  Reasoning:
+   This class uses Polymorphism because we are shaping and chaning what the parent
+   class has set up for us to create our own unique implementation
+   of a move().
    This class uses Abstraction because in the get_chess_notation and 
    get_rank_file methods, we don't define anything, but just returns. 
    The existence of these methods in reality  are just concepts, and rely 
    on other information to have purpose. What's interesting about these two methods
    in hindsight, is that their function would change completely if the information they
    borrowed changed!
-   The way we use Inheritance is more apparent because of directly Inhereting attributes
-   from the Move() class
+   
 """
 class Player_move(Move): 
 
