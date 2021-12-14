@@ -1,0 +1,14 @@
+{
+  "configurations": {
+    "Launch": {
+      "adapter": "debugpy",
+      "configuration": {
+        "request": "launch",
+	"stopOnEntry": false,
+        "program": "__main__.py",
+        "externalConsole": true
+      }
+    }
+  }
+}
+

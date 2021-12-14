@@ -1,16 +1,21 @@
 """
-Name: Daniel Gomez
-Description:
-    This is my chess game in which I may use pygame as a library.
-    Made using git verion control, vim, and my custom vim IDE.
-    Thank you for reading :)
+ Description:
+    This File uses uses the chess_engine.py file and imports its classes, the classes methods, and attributes to use in the Game Loop
+
+ OOP Principles Used:
+   Inheritance
+
+ Reasoning:
+   This class uses inheritance because...
+   This file uses polymorphism etc....
 """
+
 import pygame as p
 import chess_engine
 
 WIDTH = HEIGHT = 512
 DIMENSION = 8 #dimensions of a chessboard are 8x8
-SQUARE_SIZE = HEIGHT // DIMENSION # This is the width and height of the board divded evenly into 8 Squares!
+SQUARE_SIZE = HEIGHT // DIMENSION # This is the width and height of the board divded evenly into 8 large squares, To see them divided into the indiv. 64 squares, see line 8 and 82
 MAX_FPS = 15
 IMAGES = {}
 
@@ -21,7 +26,15 @@ def load_images():
         IMAGES[piece] = p.transform.scale(p.image.load("images/" + piece + ".png"), (SQUARE_SIZE, SQUARE_SIZE))
 
 """
-The main driver for our code. This will handle user input and updating graphics
+ Description:
+    This File uses uses the chess_engine.py file and imports its classes, the classes methods, and attributes to use in the Game Loop
+
+ OOP Principles Used:
+   Inheritance, Abstraction, etc...
+
+ Reasoning:
+   This class uses inheritance because...
+   This file uses polymorphism etc....
 """
 def main():
     p.init()
@@ -31,10 +44,35 @@ def main():
     gs = chess_engine.Gamestate()
     load_images() # only do his once before the game loop
     running = True
+    sq_selected = () # keep track of the last click of the user. this is a Tuple
+    player_clicks = [] # this is a list. Will have two tuples: [(4,2),(4,4)]
+    print(type(player_clicks))
+
     while running:
         for e in p.event.get():
             if e.type ==  p.QUIT:
                 running = False # if we hit 'x', the game will quite
+            elif e.type == p.MOUSEBUTTONDOWN: # if we click(e.type == event.type)
+                location = p.mouse.get_pos() #returns an (x,y) location of the mouse
+                
+                # This is how we are able to divide rows and columns of where the mouse is
+                #we take the x coord [0] of the location and divide it by the size of the square
+                col = location[0] // SQUARE_SIZE 
+                row = location[1] // SQUARE_SIZE 
+                if sq_selected == (row, col): #if the user clicke the same row twice, BAD
+                    sq_selected = () #re initialize to clear
+                    player_clicks = [] # clear player clicks
+                else: # If they did click the right square tho..
+                    sq_selected = (row, col)
+                    player_clicks.append(sq_selected) # append for both 1st and 2nd clicks
+
+                if len(player_clicks) == 2: #What happens if they click twice:
+                    move = chess_engine.Move(player_clicks[0], player_clicks[1], gs.board)
+                    print(move.get_chess_notation())
+                    gs.make_move(move)
+                    sq_selected = () # reset the user clicks
+                    player_clicks = []
+
         
         draw_game_state(screen,gs)
         clock.tick(MAX_FPS)
