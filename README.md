@@ -24,4 +24,5 @@ Here are some interesting facts about this project for my classmates:
 * All Sprites were made by an open source Linux/Windows software called GIMP  
 
 personal acc. token:  
-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
+
+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
