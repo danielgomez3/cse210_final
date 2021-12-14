@@ -25,4 +25,4 @@ Here are some interesting facts about this project for my classmates:
 
 personal acc. token:  
 
-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
+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
